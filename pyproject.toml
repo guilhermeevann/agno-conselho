@@ -1,0 +1,15 @@
+[project]
+name = "agent-agno-cursor"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "agno>=2.2.13",
+    "openai>=2.8.1",
+    "python-dotenv>=1.2.1",
+    "yfinance>=0.2.66",
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "httpx>=0.25.0",
+]
