@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
+
 <body>
     <div class="app-container">
         <!-- Sidebar (Optional for future history) -->
@@ -19,6 +21,7 @@
             </div>
             <div class="new-chat-btn">
                 <button onclick="location.reload()">+ Novo Conselho</button>
+                <button id="manage-agents-btn" style="margin-top: 10px;">⚙️ Gerenciar Agentes</button>
             </div>
             <div class="history-list">
                 <!-- History items would go here -->
@@ -37,7 +40,8 @@
             <div class="messages-container" id="messages-container">
                 <div class="message system-message">
                     <div class="message-content">
-                        <p>Olá! Somos a Mesa dos Conselheiros. Martinho Lutero, Agostinho, Spurgeon, Billy Graham e Paulo estão aqui para ouvir e aconselhar. Como podemos ajudar hoje?</p>
+                        <p>Olá! Somos a Mesa dos Conselheiros. Martinho Lutero, Agostinho, Spurgeon, Billy Graham e
+                            Paulo estão aqui para ouvir e aconselhar. Como podemos ajudar hoje?</p>
                     </div>
                 </div>
             </div>
@@ -47,7 +51,7 @@
                     <textarea id="user-input" placeholder="Digite sua pergunta..." rows="1"></textarea>
                     <button id="send-btn" aria-label="Enviar">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+                            <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor" />
                         </svg>
                     </button>
                 </div>
@@ -57,6 +61,50 @@
             </div>
         </main>
     </div>
+
+    <!-- Agent Management Modal -->
+    <div id="agent-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Gerenciar Agentes</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="agents-list-container">
+                    <h3>Agentes Disponíveis</h3>
+                    <div id="agents-list" class="agents-grid">
+                        <!-- Agents will be populated here -->
+                    </div>
+                    <button id="add-agent-btn" class="action-btn">+ Adicionar Novo Agente</button>
+                </div>
+                <div class="agent-form-container" id="agent-form-container" style="display: none;">
+                    <h3 id="form-title">Novo Agente</h3>
+                    <form id="agent-form">
+                        <input type="hidden" id="agent-id">
+                        <div class="form-group">
+                            <label for="agent-name">Nome</label>
+                            <input type="text" id="agent-name" required placeholder="Ex: C.S. Lewis">
+                        </div>
+                        <div class="form-group">
+                            <label for="agent-desc">Descrição</label>
+                            <input type="text" id="agent-desc" required placeholder="Ex: Apologeta cristão...">
+                        </div>
+                        <div class="form-group">
+                            <label for="agent-prompt">Prompt (Instruções)</label>
+                            <textarea id="agent-prompt" rows="10" required
+                                placeholder="<agent_configuration>..."></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" id="cancel-form-btn" class="secondary-btn">Cancelar</button>
+                            <button type="submit" class="primary-btn">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
