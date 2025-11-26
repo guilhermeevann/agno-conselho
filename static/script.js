@@ -102,6 +102,10 @@ function addLoadingMessage() {
     return div.id;
 }
 
+function scrollToBottom() {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
 function removeMessage(id) {
     const element = document.getElementById(id);
     if (element) {
